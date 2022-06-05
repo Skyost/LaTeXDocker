@@ -1,2 +1,2 @@
-sudo docker publish skyost/latex-docker --all-tags
+sudo docker push skyost/latex-docker --all-tags
 
