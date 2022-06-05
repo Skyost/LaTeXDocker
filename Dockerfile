@@ -9,11 +9,11 @@ LABEL \
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-WORKDIR /usr/src/app/
+WORKDIR /__w/
 
 COPY \
   setup.sh \
-  /usr/src/app/
+  /__w/
 
 RUN apt-get -qq update && apt install -qq -y locales && rm -rf /var/lib/apt/lists/* \
 	&& localedef -i fr_FR -c -f UTF-8 -A /usr/share/locale/locale.alias fr_FR.UTF-8
