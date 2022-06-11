@@ -12,10 +12,9 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout ⬇️
-        uses: actions/checkout@v3
-      - name: Set up QEMU 🐦
-        uses: docker/setup-qemu-action@v2
+      - name: Get current date 🗓️
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y%m%d')"
       - name: Set up Docker Buildx ⚙️
         uses: docker/setup-buildx-action@v2
       - name: Login to DockerHub 🙋‍♂️
@@ -23,7 +22,8 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Build the Docker image 🐋
-        run: ./build.sh
-      - name: Push to DockerHub ⬆️
-        run: ./push.sh
+      - name: Build and push 🐋
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: skyost/latex-docker:latest,skyost/latex-docker:${{ steps.date.outputs.date }}
