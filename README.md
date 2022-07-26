@@ -15,4 +15,4 @@ But it also includes [Git](https://git-scm.com/) and [NodeJS](https://nodejs.org
 ## Links
 
 * [Docker Hub](https://hub.docker.com/r/skyost/latex-docker).
-* [Github](https://github.com/Skyost/LaTeXDocker)
+* [Github](https://github.com/Skyost/LaTeXDocker).
