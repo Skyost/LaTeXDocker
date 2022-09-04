@@ -11,7 +11,7 @@ echo "Installing Node.js"
 apt -qq -y install curl
 curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
 # apt -qq -y install gcc g++ make
-apt -qq -y install nodejs
+apt -qq -y install nodejs npm
 node --version
 npm --version
 
