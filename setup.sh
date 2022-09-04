@@ -2,14 +2,14 @@ apt-get -qq update
 
 echo "Installing pandoc..."
 apt -qq -y install wget
-wget -q https://github.com/jgm/pandoc/releases/download/2.18/pandoc-2.18-1-amd64.deb
-dpkg -i pandoc-2.18-1-amd64.deb
-rm pandoc-2.18-1-amd64.deb
+wget -q https://github.com/jgm/pandoc/releases/download/2.19.2/pandoc-2.19.2-1-amd64.deb
+dpkg -i pandoc-2.19.2-1-amd64.deb
+rm pandoc-2.19.2-1-amd64.deb
 pandoc --version
 
 echo "Installing Node.js"
 apt -qq -y install curl
-curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
+curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
 # apt -qq -y install gcc g++ make
 apt -qq -y install nodejs npm
 node --version
