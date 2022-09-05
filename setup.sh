@@ -9,10 +9,12 @@ pandoc --version
 
 echo "Installing Node.js"
 apt -qq -y install curl
-curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
+apt-get -qq update
 # apt -qq -y install gcc g++ make
-apt -qq -y install nodejs
+apt -qq -y install nodejs npm
 node --version
+npm --version
 
 echo "Installing git..."
 apt -qq -y install git
