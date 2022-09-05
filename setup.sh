@@ -8,14 +8,11 @@ rm pandoc-2.19.2-1-amd64.deb
 pandoc --version
 
 echo "Installing Node.js"
-apt -qq -y install curl build-essential libssl-dev
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-nvm install 16.17.0
-nvm alias default node
+apt -qq -y install curl
+curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+# apt -qq -y install gcc g++ make
+apt -qq -y install nodejs
 node --version
-npm --version
 
 echo "Installing git..."
 apt -qq -y install git
