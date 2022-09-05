@@ -8,10 +8,10 @@ rm pandoc-2.19.2-1-amd64.deb
 pandoc --version
 
 echo "Installing Node.js"
-apt -qq -y install curl
-curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
-# apt -qq -y install gcc g++ make
-apt -qq -y install nodejs npm
+apt -qq -y install build-essential libssl-dev
+wget -q https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+nvm install 16.17.0
+nvm alias default node
 node --version
 npm --version
 
