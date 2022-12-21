@@ -13,8 +13,10 @@ curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
 apt-get -qq update
 # apt -qq -y install gcc g++ make
 apt -qq -y install nodejs npm
+npm install --global yarn
 node --version
 npm --version
+yarn --version
 
 echo "Installing git..."
 apt -qq -y install git
