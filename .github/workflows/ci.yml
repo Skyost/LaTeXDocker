@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Get current date 🗓️
         id: date
-        run: echo "::set-output name=date::$(date +'%Y%m%d')"
+        run: echo "date=$(date +'%Y%m%d')" >> $GITHUB_OUTPUT
       - name: Set up Docker Buildx ⚙️
         uses: docker/setup-buildx-action@v2
       - name: Login to DockerHub 🙋‍♂️
@@ -23,7 +23,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build and push 🐋
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           push: true
           tags: skyost/latex-docker:latest,skyost/latex-docker:${{ steps.date.outputs.date }}
