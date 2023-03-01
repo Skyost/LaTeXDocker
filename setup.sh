@@ -3,8 +3,8 @@ apt-get -qq update
 echo "Installing pandoc..."
 apt -qq -y install wget
 wget -q https://github.com/jgm/pandoc/releases/download/3.1/pandoc-3.1-1-amd64.deb
-dpkg -i pandoc-3.0.1-1-amd64.deb
-rm pandoc-3.0.1-1-amd64.deb
+dpkg -i pandoc-3.1-1-amd64.deb
+rm pandoc-3.1-1-amd64.deb
 pandoc --version
 
 echo "Installing Node.js"
