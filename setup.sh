@@ -1,7 +1,7 @@
 apt-get -qq update
 
 echo "Installing pandoc..."
-pandoc_version=3.1.8
+pandoc_version=3.1.9
 apt -qq -y install wget
 wget -q https://github.com/jgm/pandoc/releases/download/$pandoc_version/pandoc-$pandoc_version-1-amd64.deb
 dpkg -i pandoc-$pandoc_version-1-amd64.deb
@@ -10,8 +10,9 @@ pandoc --version
 
 echo "Installing Node.js"
 node_version=20
-apt -qq -y install curl
-curl -fsSL https://deb.nodesource.com/setup_$node_version.x | bash -
+apt -qq -y install ca-certificates curl gnupg
+curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$node_version.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list
 apt-get -qq update
 # apt -qq -y install gcc g++ make
 apt -qq -y install nodejs npm
