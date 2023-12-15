@@ -28,7 +28,7 @@ git --version
 
 # Don't upgrade until this : https://gitlab.freedesktop.org/poppler/poppler/-/issues/1309 is fixed.
 echo "Installing Poppler-utils..."
-poppler_version=20.10
+poppler_version=23.12
 apt -qq -y install xz-utils cmake build-essential libfreetype6-dev pkg-config libfontconfig1-dev libnss3-dev libjpeg-dev libopenjp2-7-dev libcairo2-dev
 wget -q https://poppler.freedesktop.org/poppler-$poppler_version.0.tar.xz
 mkdir install-poppler
@@ -37,7 +37,8 @@ rm poppler-$poppler_version.0.tar.xz
 cd install-poppler
 mkdir build
 cd build
-cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DTESTDATADIR=$PWD/testfiles -DENABLE_QT6=OFF -DENABLE_UNSTABLE_API_ABI_HEADERS=ON .. 
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DTESTDATADIR=$PWD/testfiles -DENABLE_QT6=OFF -DENABLE_GPGME=OFF -DENABLE_UNSTABLE_API_ABI_HEADERS=ON -DENABLE_BOOST=OFF -DENABLE_LCMS=OFF -DENABLE_LIBCURL=OFF ..
+# cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DTESTDATADIR=$PWD/testfiles -DENABLE_QT6=OFF -DENABLE_UNSTABLE_API_ABI_HEADERS=ON .. 
 make install
 cd ../../
 pdftocairo -v
