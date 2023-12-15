@@ -26,8 +26,9 @@ echo "Installing git..."
 apt -qq -y install git
 git --version
 
+# Don't upgrade until this : https://gitlab.freedesktop.org/poppler/poppler/-/issues/1309 is fixed.
 echo "Installing Poppler-utils..."
-apt -qq -y install poppler-utils
+apt -qq -y install poppler-utils=21.04
 pdftocairo -v
 
 # echo "Installing TeXLive..."
