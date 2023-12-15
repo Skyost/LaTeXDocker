@@ -30,15 +30,15 @@ git --version
 echo "Installing Poppler-utils..."
 poppler_version=21.04
 wget -q https://poppler.freedesktop.org/poppler-$poppler_version.0.tar.xz
-tar -xf poppler-$poppler_version.0.tar.xz
-cd poppler-$poppler_version.0
+mkdir install-poppler
+tar -xf poppler-$poppler_version.0.tar.xz --strip 1 -C install-poppler
+rm $poppler_version.0.tar.xz
+cd install-poppler
 mkdir build
 cd build
 cmake ..
 make
 make install
-
-apt -qq -y install poppler-utils=21.04
 pdftocairo -v
 
 # echo "Installing TeXLive..."
