@@ -28,6 +28,16 @@ git --version
 
 # Don't upgrade until this : https://gitlab.freedesktop.org/poppler/poppler/-/issues/1309 is fixed.
 echo "Installing Poppler-utils..."
+poppler_version=21.04
+wget -q https://poppler.freedesktop.org/poppler-$poppler_version.0.tar.xz
+tar -xf poppler-$poppler_version.0.tar.xz
+cd poppler-$poppler_version.0
+mkdir build
+cd build
+cmake ..
+make
+make install
+
 apt -qq -y install poppler-utils=21.04
 pdftocairo -v
 
