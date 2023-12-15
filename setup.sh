@@ -29,16 +29,17 @@ git --version
 # Don't upgrade until this : https://gitlab.freedesktop.org/poppler/poppler/-/issues/1309 is fixed.
 echo "Installing Poppler-utils..."
 poppler_version=21.04
+apt -qq -y install xz-utils cmake build-essential libfreetype6-dev pkg-config libfontconfig1-dev libnss3-dev libjpeg-dev libopenjp2-7-dev libcairo2-dev
 wget -q https://poppler.freedesktop.org/poppler-$poppler_version.0.tar.xz
 mkdir install-poppler
 tar -xf poppler-$poppler_version.0.tar.xz --strip 1 -C install-poppler
-rm $poppler_version.0.tar.xz
+rm poppler-$poppler_version.0.tar.xz
 cd install-poppler
 mkdir build
 cd build
-cmake ..
-make
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DTESTDATADIR=$PWD/testfiles -DENABLE_QT6=OFF -DENABLE_UNSTABLE_API_ABI_HEADERS=ON .. 
 make install
+cd ../../
 pdftocairo -v
 
 # echo "Installing TeXLive..."
