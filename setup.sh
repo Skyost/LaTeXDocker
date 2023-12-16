@@ -1,7 +1,7 @@
 apt-get -qq update
 
 echo "Installing pandoc..."
-pandoc_version=3.1.9
+pandoc_version=3.1.10
 apt -qq -y install wget
 wget -q https://github.com/jgm/pandoc/releases/download/$pandoc_version/pandoc-$pandoc_version-1-amd64.deb
 dpkg -i pandoc-$pandoc_version-1-amd64.deb
@@ -27,9 +27,9 @@ apt -qq -y install git
 git --version
 
 # Don't upgrade until this : https://gitlab.freedesktop.org/poppler/poppler/-/issues/1309 is fixed.
-echo "Installing Poppler-utils..."
+echo "Installing pdftocairo..."
 poppler_version=23.12
-apt -qq -y install xz-utils cmake build-essential libfreetype6-dev pkg-config libfontconfig1-dev libnss3-dev libjpeg-dev libopenjp2-7-dev libcairo2-dev
+apt -qq -y install xz-utils cmake build-essential libfreetype6-dev pkg-config libfontconfig1-dev libnss3-dev libjpeg-dev libopenjp2-7-dev libcairo2-dev libtiff-dev
 wget -q https://poppler.freedesktop.org/poppler-$poppler_version.0.tar.xz
 mkdir install-poppler
 tar -xf poppler-$poppler_version.0.tar.xz --strip 1 -C install-poppler
@@ -37,8 +37,7 @@ rm poppler-$poppler_version.0.tar.xz
 cd install-poppler
 mkdir build
 cd build
-cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DTESTDATADIR=$PWD/testfiles -DENABLE_QT6=OFF -DENABLE_GPGME=OFF -DENABLE_UNSTABLE_API_ABI_HEADERS=ON -DENABLE_BOOST=OFF -DENABLE_LCMS=OFF -DENABLE_LIBCURL=OFF -DENABLE_LIBTIFF=OFF ..
-# cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DTESTDATADIR=$PWD/testfiles -DENABLE_QT6=OFF -DENABLE_UNSTABLE_API_ABI_HEADERS=ON .. 
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DTESTDATADIR=$PWD/testfiles -DENABLE_QT6=OFF -DENABLE_QT5=OFF -DENABLE_GPGME=OFF -DENABLE_UNSTABLE_API_ABI_HEADERS=ON -DENABLE_BOOST=OFF -DENABLE_LCMS=OFF -DENABLE_LIBCURL=OFF ..
 make install
 cd ../../
 pdftocairo -v
