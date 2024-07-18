@@ -1,7 +1,7 @@
 apt-get -qq update
 
 echo "Installing pandoc..."
-pandoc_version=3.1.13
+pandoc_version=3.2.1
 apt -qq -y install wget
 wget -q https://github.com/jgm/pandoc/releases/download/$pandoc_version/pandoc-$pandoc_version-1-amd64.deb
 dpkg -i pandoc-$pandoc_version-1-amd64.deb
@@ -28,7 +28,7 @@ git --version
 
 # Don't upgrade until this : https://gitlab.freedesktop.org/poppler/poppler/-/issues/1309 is fixed.
 echo "Installing pdftocairo..."
-poppler_version=24.04
+poppler_version=24.07
 apt -qq -y install xz-utils cmake build-essential libfreetype6-dev pkg-config libfontconfig1-dev libnss3-dev libjpeg-dev libopenjp2-7-dev libcairo2-dev libtiff-dev
 wget -q https://poppler.freedesktop.org/poppler-$poppler_version.0.tar.xz
 mkdir install-poppler
