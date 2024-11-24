@@ -1,7 +1,7 @@
 apt-get -qq update
 
 echo "Installing pandoc..."
-pandoc_version=3.4
+pandoc_version=3.5
 apt -qq -y install wget
 wget -q https://github.com/jgm/pandoc/releases/download/$pandoc_version/pandoc-$pandoc_version-1-amd64.deb
 dpkg -i pandoc-$pandoc_version-1-amd64.deb
@@ -9,7 +9,7 @@ rm pandoc-$pandoc_version-1-amd64.deb
 pandoc --version
 
 echo "Installing Node.js"
-node_version=22
+node_version=23
 apt -qq -y install ca-certificates curl gnupg
 mkdir -p /etc/apt/keyrings
 curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
@@ -28,7 +28,7 @@ git --version
 
 # Don't upgrade until this : https://gitlab.freedesktop.org/poppler/poppler/-/issues/1309 is fixed.
 echo "Installing pdftocairo..."
-poppler_version=24.09
+poppler_version=24.11
 apt -qq -y install xz-utils cmake build-essential libfreetype6-dev pkg-config libfontconfig1-dev libnss3-dev libjpeg-dev libopenjp2-7-dev libcairo2-dev libtiff-dev
 wget -q https://poppler.freedesktop.org/poppler-$poppler_version.0.tar.xz
 mkdir install-poppler
