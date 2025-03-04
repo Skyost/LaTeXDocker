@@ -2,9 +2,9 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "main" ]
   schedule:
     - cron: "1 0 1 * *"
   workflow_dispatch:
@@ -17,14 +17,14 @@ jobs:
         id: date
         run: echo "date=$(date +'%Y%m%d')" >> $GITHUB_OUTPUT
       - name: Set up Docker Buildx ⚙️
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v3
       - name: Login to DockerHub 🙋‍♂️
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build and push 🐋
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v6
         with:
           push: true
           tags: skyost/latex-docker:latest,skyost/latex-docker:${{ steps.date.outputs.date }}
